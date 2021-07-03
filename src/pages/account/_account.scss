@@ -1,0 +1,318 @@
+.account {
+    // justify-content: center;
+
+    height: 100vh;
+
+    background-image: linear-gradient(
+            76deg,
+            RGBA(var(--color-main-1), 0.5),
+            RGBA(var(--color-main-2), 0.5)
+        ),
+        url(https://explodii.s3.us-east-2.amazonaws.com/img/tours/tour-3-cover.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.dashboard {
+    display: flex;
+
+    // height: 80.2rem;
+    // height: 87.5rem;
+    height: 80.5rem;
+    // height: 75.5rem;
+    width: 150rem;
+    // width: 173rem;
+
+    box-shadow: var(--shadow-dark);
+
+    margin: 0 auto;
+    margin-top: 6rem;
+    background-color: white;
+
+    &__view {
+        flex: 0 0 26rem;
+        padding: 6rem 0;
+        background-image: linear-gradient(
+            76deg,
+            RGBA(var(--color-main-1)),
+            RGBA(var(--color-main-2))
+        );
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        // align-items: center;
+
+        // display: grid;
+        // grid-template-areas:
+        //     "formSet formPW"
+        //     "map maps";
+        // grid-template-columns: repeat(2, min-content);
+
+        // justify-content: space-between;
+
+        margin-top: 1rem;
+
+        width: 100%;
+
+        padding: 2rem 10rem;
+    }
+}
+
+// Profile
+.profile {
+    position: relative;
+
+    display: grid;
+    flex-direction: column;
+
+    cursor: default;
+
+    &__photo {
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+
+        margin-left: 7rem;
+    }
+
+    &__name {
+        position: relative;
+
+        font-size: 2rem;
+        text-align: center;
+
+        margin-left: 0rem;
+
+        background-image: linear-gradient(76deg, #1a5ef3, #1a5ef3);
+        background-clip: text;
+        color: transparent;
+    }
+
+    &__email {
+        // grid-area: 1/2/1/2;
+
+        // margin-top: 7rem;
+        // margin-left: -2rem;
+        text-align: center;
+
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+
+        position: absolute;
+        bottom: -2.5rem;
+        left: 12rem;
+
+        height: 2rem;
+        width: 2rem;
+
+        color: transparent;
+
+        // background-image: url(../../assets/svgs/online.svg);
+        // background-size: cover;
+
+        background-image: linear-gradient(to right, #1a5ef3, #1a5ef3);
+
+        mask-image: url(../../assets/svgs/online-1.svg);
+        mask-size: cover;
+        mask-position: top;
+    }
+}
+
+// Gestion de navBar
+
+.navBar {
+    &--account {
+        padding: 0 14%;
+    }
+    &__logo,
+    &__logo-text {
+        &--account {
+            background-image: linear-gradient(to bottom right, white, white);
+        }
+    }
+}
+
+// Forms handling
+.profileForm {
+    position: relative;
+
+    padding: 4rem;
+    padding-top: 3rem;
+    height: min-content;
+
+    border-radius: 3rem;
+
+    background-color: #ffffff;
+
+    // box-shadow: 0 2rem 6rem RGBA(0, 0, 0, 0.151);
+
+    &__heading {
+        background-image: linear-gradient(
+            to bottom right,
+            RGBA(var(--color-blue-special)),
+            RGBA(var(--color-blue-special))
+        );
+        background-clip: text;
+        color: transparent;
+
+        text-transform: uppercase;
+        font-family: "Manrope" sans-serif;
+        font-size: 3rem;
+    }
+
+    &__illustration {
+        position: absolute;
+        top: -8rem;
+        right: 3rem;
+
+        height: 15rem;
+        width: 23rem;
+
+        padding: 1rem;
+        box-shadow: var(--shadow-dark);
+        border-radius: 3rem;
+
+        background-image: url("../../assets/svgs/camping.svg");
+        background-size: cover;
+    }
+
+    &__input {
+        display: block;
+        transition: all 0.3s;
+
+        width: 45rem;
+        padding: 1.5rem 2rem;
+        margin-bottom: 2rem;
+
+        // background-color: #eceff1a4;
+        background-color: #e5e5e56b;
+
+        border-radius: 2px;
+        border: 1px solid #cbd6e2;
+        border: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 8px;
+
+        font-size: 1.7rem;
+        font-family: "Lato", sans-serif;
+        color: RGBA(var(--color-grey-dark));
+        // color: RGBA(var(--color-grey-dark));
+        font-weight: lighter;
+
+        &:focus {
+            outline: none;
+            // box-shadow: var(--shadow-dark);
+            border-bottom: 3px solid RGBA(var(--color-primary-light));
+        }
+
+        &:focus:invalid {
+            border-bottom: 3px solid RGBA(204, 0, 0, 1);
+        }
+
+        &::-webkit-input-placeholder {
+            font-size: 1.7rem;
+            color: RGBA(var(--color-grey-dark));
+        }
+    }
+
+    &__input::placeholder {
+        font-size: 1.6rem;
+        opacity: 0.5;
+    }
+
+    &__label {
+        position: relative;
+        display: flex;
+    }
+
+    &__upload-label {
+        position: absolute;
+        bottom: 15rem;
+        left: 14rem;
+
+        display: block;
+
+        transition: all 0.2s;
+
+        height: 2.8rem;
+        width: 14.5rem;
+
+        font-size: 1.5rem;
+        text-decoration: none;
+        border-bottom: 1px solid RGBA(var(--color-blue-special));
+
+        color: RGBA(var(--color-blue-special));
+
+        text-align: center;
+
+        cursor: pointer;
+
+        p {
+            margin-top: 2rem;
+        }
+    }
+
+    &__label-text {
+        padding: 1rem;
+        transition: all 0.3s;
+
+        font-size: 1.3rem;
+        font-family: "Lato", sans-serif;
+        color: RGBA(var(--color-grey-dark));
+        font-weight: 600;
+    }
+
+    &__upload {
+        height: 0px;
+    }
+
+    &__photo {
+        height: 8.5rem;
+        width: 8.5rem;
+        border-radius: 50%;
+
+        margin-top: 1.5rem;
+    }
+}
+
+// Error handling
+
+// TODO: Making it reusable
+.profileForm {
+    &__error {
+        position: relative;
+
+        position: absolute;
+        bottom: 8.5rem;
+        right: 0;
+
+        font-size: 1.22rem;
+        font-weight: bolder;
+        color: #e34850;
+
+        &::before {
+            content: "";
+
+            position: absolute;
+            left: -2.3rem;
+            bottom: 2px;
+
+            height: 2rem;
+            width: 2rem;
+
+            background-color: #e34850;
+
+            mask-image: url("../../assets/svgs/warning.svg");
+            mask-size: cover;
+        }
+    }
+}

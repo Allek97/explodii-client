@@ -1,0 +1,173 @@
+@import "../../abstracts/variables";
+
+@font-face {
+    font-family: Merriweather;
+    src: url("../../assets/fonts/Merriweather-Regular.ttf");
+
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+}
+
+.reviews-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 50rem;
+    margin-top: 7rem;
+    // margin-bottom: 3rem;
+
+    .arrow-left,
+    .arrow-right {
+        height: 4rem;
+        width: 4rem;
+
+        background-image: linear-gradient(to bottom right, #6981d1, #12107a);
+        mask-image: url("../../assets/svgs/big-arrow.svg");
+        mask-size: cover;
+
+        cursor: pointer;
+        &:hover {
+            background-image: linear-gradient(
+                to bottom right,
+                #273e88,
+                #12107a
+            );
+        }
+    }
+
+    .arrow-left {
+        margin-right: 15rem;
+        transform: rotate(90deg);
+    }
+
+    .arrow-right {
+        margin-left: 15rem;
+        transform: rotate(-90deg);
+    }
+}
+
+.reviewBox {
+    display: flex;
+    justify-content: space-around;
+    width: 80rem;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // align-content: center;
+
+    transition: all 0.4s;
+
+    width: 30rem;
+    background-color: RGBA(255, 255, 255, 0.322);
+
+    box-shadow: var(--shadow-light);
+
+    // transform: skewX(-5deg);
+
+    &__picture {
+        // background-image: linear-gradient(
+        //         to right,
+        //         RGBA(var(--color-primary-light), 0.35),
+        //         RGBA(var(--color-primary-dark), 0.35)
+        //     ),
+        //     url(../../assets/img/users/user-8.jpg);
+
+        background-size: cover;
+        height: 14rem;
+        width: 14rem;
+        border-radius: 50%;
+        margin-top: 3.5rem;
+        margin-bottom: 3.5rem;
+    }
+
+    &__text {
+        width: 80%;
+
+        margin-bottom: 2rem;
+
+        font-size: 1.6rem;
+        font-weight: 600;
+        text-align: center;
+        color: $color-grey-dark-3;
+    }
+
+    &__name {
+        margin-bottom: 1.5rem;
+
+        font-family: "Merriweather", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: $color-grey-dark-3;
+    }
+
+    .starbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__review {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 400;
+            padding: 1rem;
+
+            color: $color-grey-dark;
+        }
+
+        &__star {
+            height: 2.7rem;
+            width: 2.7rem;
+
+            //     background-image: linear-gradient(
+            //         to right,
+            //         RGBA(var(--color-primary-light), 0.8) 80%,
+            //         RGBA(var(--color-primary-dark), 0.1) 20%
+            //     );
+            mask-image: url("../../assets/svgs/star-review.svg");
+            mask-size: cover;
+            mask-repeat: no-repeat;
+            //     // background-image: url(../../assets/svgs/star.svg);
+            //     // fill: blue;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &--closed {
+        display: none;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.review-tracker {
+    display: flex;
+    padding-top: 2rem;
+
+    .carousel {
+        height: 4px;
+        width: 3rem;
+
+        margin-right: 0.5rem;
+
+        // background-color: grey;
+        color: #ffffff;
+        // background-color: RGBA(var(--color-primary-light), 0.4);
+        background-color: #b3b3b39d;
+
+        &--selected {
+            // background-color: #7e7b7b;
+            background-color: #999696;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0px 16px #0005;
+        }
+    }
+}
