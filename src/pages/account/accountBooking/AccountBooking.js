@@ -25,7 +25,8 @@ export default function AccountReview() {
                         credentials: "include",
                     }
                 );
-                setBookings(userBookingsRes.data.data);
+                console.log(userBookingsRes);
+                setBookings(userBookingsRes.data.tours);
             } catch (err) {
                 if (
                     err.response.data.message ===
@@ -47,30 +48,6 @@ export default function AccountReview() {
         }
         fetchApi();
     }, []);
-
-    // useEffect(() => {
-    //     async function fetchApi() {
-    //         try {
-    //             // Empty booking means user didnt book yet
-    //             if (bookings.length === 0) {
-    //                 const res = await axios.get(
-    //                     `${process.env.REACT_APP_URL}/api/v1/tours/top-5-cheap`,
-    //                     {
-    //                         withCredentials: true,
-    //                     }
-    //                 );
-    //                 setBookings(res.data.data);
-    //                 setSuggested(true);
-    //             }
-    //         } catch (err) {
-    //             console.log(err.response.data.message);
-    //         }
-    //     }
-
-    //     fetchApi();
-    // }, []);
-
-    // console.log(bookings);
 
     // Set background image from our api directely
     const setBackgroundUrlStyle = (tourBg) => {
