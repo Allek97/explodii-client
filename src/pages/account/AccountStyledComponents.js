@@ -3,7 +3,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
-import { v4 as uuidv4 } from "uuid";
 
 // NOTE: Variables/Animations
 const slideFromUp = keyframes`
@@ -600,8 +599,8 @@ export const ReviewBox = (props) => {
                                     ? setReviewStarsBg()
                                     : setReviewStarsBg(rating)
                             }
-                            key={uuidv4()}
-                            id={uuidv4()}
+                            key={el}
+                            id={el}
                             svg={starSvg}
                             // rating={el <= 4.5 ? null : 4.5}
                         />
