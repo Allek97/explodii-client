@@ -123,7 +123,7 @@ export default function ReviewWrite(props) {
                         }}
                     >
                         Share your opinion with us{" "}
-                        {`TODO: SUCCESS MESSAGE AFTER SUCCESSFUL TRANSACTION && SUCCESSFUL REVIEW SUBMISSION`}
+                        {/* {`TODO: SUCCESS MESSAGE AFTER SUCCESSFUL TRANSACTION && SUCCESSFUL REVIEW SUBMISSION`} */}
                     </h1>
                     <UserNameStyled style={{ textTransform: "capitalize" }}>
                         {userName}
