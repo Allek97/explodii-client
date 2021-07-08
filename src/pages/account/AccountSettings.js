@@ -5,7 +5,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-import { SettingsButton, SuccessSave } from "./AccountStyledComponents";
+import { SuccessSave } from "./components/SuccessSave";
+import { SettingsButton } from "./style/AccountStyledComponents";
 
 import "./_account.scss";
 import "../../componants/reusable/_navBar.scss";
@@ -37,10 +38,9 @@ export default function AccountSettings(props) {
 
     // API MANAGEMENT
     const handleProfileSubmit = async (e) => {
+        setEmailErr("");
         try {
             e.preventDefault();
-
-            setEmailErr("");
 
             const body = new FormData();
 
@@ -80,6 +80,9 @@ export default function AccountSettings(props) {
     };
 
     const handlePasswordSubmit = async (e) => {
+        setCurrentPWErr("");
+        setPasswordError("");
+        setPasswordConfirmError("");
         try {
             e.preventDefault();
 
@@ -123,10 +126,6 @@ export default function AccountSettings(props) {
             }
         } catch (err) {
             console.log(err.response.data.message);
-
-            setCurrentPWErr("");
-            setPasswordError("");
-            setPasswordConfirmError("");
 
             const errorList = new Map();
 

@@ -13,7 +13,7 @@ import {
     SideItem,
     SideLink,
     FunctionalBtn,
-} from "./AccountStyledComponents";
+} from "./style/AccountStyledComponents";
 
 import "./_account.scss";
 import "../../componants/reusable/_navBar.scss";
@@ -243,7 +243,14 @@ export default function Account(props) {
                             setUserEmail={setUserEmail}
                         />
                     )}
-                    {selectedBtn.booking && <AccountBooking userId={userId} />}
+                    {selectedBtn.booking && (
+                        <AccountBooking
+                            userId={userId}
+                            userName={userName}
+                            userEmail={userEmail}
+                            userPhoto={userPhoto}
+                        />
+                    )}
                     {selectedBtn.review && (
                         <AccountReview userId={userId} userName={userName} />
                     )}

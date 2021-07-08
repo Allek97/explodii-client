@@ -4,7 +4,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { ReviewBox } from "../../../account/AccountStyledComponents";
+import { ReviewBox } from "../../../account/components/ReviewBox";
 
 const ExcursionReviewContainer = styled.div`
     position: relative;
