@@ -7,7 +7,7 @@ import "../../base/_animations.scss";
 // Animations
 
 const rotationAnimation = {
-    animation: "rotationAnimation 4s ease-in-out 1",
+    animation: "rotationAnimation 4.1s ease-in-out 1",
 };
 
 export default function RotatingText() {
