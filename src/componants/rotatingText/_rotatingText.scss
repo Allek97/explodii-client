@@ -1,3 +1,5 @@
+@import "../../abstracts/_mixins";
+
 @font-face {
     font-family: Manrope;
     src: url("../../assets/fonts/Manrope-ExtraBold.ttf");
@@ -7,7 +9,7 @@
     display: flex;
     align-items: center;
 
-    width: 41rem;
+    max-width: 41rem;
 
     // NOTE: VERY TO MAKE SCROLLING ANIMATION WHERE OBJECT DISSAPEAR
     overflow: hidden;
@@ -20,6 +22,10 @@
         border-radius: 1.2rem;
 
         background-color: #3be5dd;
+
+        @include respond(phone) {
+            margin-right: 1.4rem;
+        }
     }
 
     &__container {

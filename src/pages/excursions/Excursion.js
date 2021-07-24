@@ -3,22 +3,24 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { useMediaQuery } from "react-responsive";
+import { IoColorFilterOutline } from "react-icons/io5";
+import { BsFilterRight } from "react-icons/bs";
 
 import Loading from "../../componants/loading/PageLoading";
 import ExcursionFilter from "./excursionFilter/ExcursionFilter";
-import ExcursionSort from "./ExcursionSort";
-import { ProfileBtn, TourBox } from "./ExcursionStyledComponants";
-import Decoration from "./ExcursionDecoration";
+import ExcursionSort from "./excursionSort/ExcursionSort";
+import TourBox from "./tourBox/TourBox";
+import ResponsiveTourBox from "./responsiveTourBox/ResponsiveTourBox";
+import Decoration from "./otherComponents/ExcursionDecoration";
 import Footer from "../../componants/footer/Footer";
+import NavBar from "./otherComponents/ExcursionNavBar";
+import { ExcursionInfoSort, FilterBtn } from "./ExcursionStyles";
+
+import { ReactComponent as FilterSvg } from "../../assets/svgs/filter.svg";
 
 import "./_excursion.scss";
 import "../../componants/reusable/_navBar.scss";
-import "../../assets/fonts/_global-fonts.scss";
-
-const photoStyle = {
-    width: "3.8rem",
-    borderRadius: "18px",
-};
 
 export default function Excursions(props) {
     // props
@@ -29,11 +31,11 @@ export default function Excursions(props) {
     const [sortField, setSortField] = useState("");
     const [isApiConsumed, setIsApiConsumed] = useState(false);
     const [animationLoad, setAnimationLoad] = useState(false);
-
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [isFilterApplied, setIsFilterApplied] = useState(false);
     // variables
-    const userImg = (photo) => {
-        return `${process.env.REACT_APP_URL}/api/v1/users/images/${photo}`;
-    };
+    const isTabLand = useMediaQuery({ query: "(max-width: 75em )" });
+    const isTabPort = useMediaQuery({ query: "(max-width: 56.25em )" });
 
     useEffect(() => {
         async function fetchApi() {
@@ -64,129 +66,140 @@ export default function Excursions(props) {
         };
     }, []);
 
+    useEffect(() => {
+        if (!isTabLand) {
+            setIsFilterOpen(false);
+        }
+    }, [isTabLand]);
+
     return (
         <>
             {isApiConsumed && (
                 <>
                     <Loading loadingTime={500} />
                     <div>
-                        <div
-                            className="excursion"
-                            style={
-                                paymentStatus
-                                    ? {
-                                          filter: "blur(5px)",
-                                          pointerEvents: "none",
-                                          overflow: "hidden",
-                                      }
-                                    : { overflow: "hidden" }
-                            }
-                        >
-                            <div className="navBar">
-                                <div className="navBar__logo-box">
-                                    <div className="navBar__logo">{}</div>
-                                    <div className="navBar__logo-text">
-                                        explodii
-                                    </div>
-                                </div>
-                                <a href="/" className="navBar__btn">
-                                    HomePage
-                                </a>
-                                {!authStatus && (
-                                    <a href="/login" className="navBar__btn">
-                                        Log In
-                                    </a>
-                                )}
-                                {!authStatus ? (
-                                    <a href="/signup" className="navBar__btn">
-                                        Sign Up
-                                    </a>
-                                ) : (
-                                    <ProfileBtn href="/account">
-                                        {/* <div style={profileStyle(userPhoto)}>{}</div> */}
-                                        <img
-                                            src={userImg(userPhoto)}
-                                            alt="profile"
-                                            style={photoStyle}
-                                        />
-                                        <span
-                                            style={{
-                                                padding: "0 2rem",
-                                                paddingLeft: "1.2rem",
-                                                minWidth: "6rem",
-                                            }}
-                                        >{`${userName}`}</span>
-                                    </ProfileBtn>
-                                )}
-                            </div>
+                        <div className="excursion">
+                            <NavBar
+                                authStatus={authStatus}
+                                userName={userName}
+                                userPhoto={userPhoto}
+                            />
 
-                            <main
-                                style={{
-                                    display: "flex",
-                                    marginTop: "8rem",
-                                }}
-                            >
-                                <div style={{ marginRight: "5rem" }}>
-                                    <ExcursionFilter
-                                        setExcursions={setExcursions}
-                                        setNbResults={setNbResults}
-                                        sortField={sortField}
-                                        authStatus={authStatus}
-                                    />
-                                </div>
+                            <main className="excursion-main">
+                                <ExcursionFilter
+                                    setExcursions={setExcursions}
+                                    setNbResults={setNbResults}
+                                    sortField={sortField}
+                                    authStatus={authStatus}
+                                    isFilterOpen={isFilterOpen}
+                                    setIsFilterOpen={setIsFilterOpen}
+                                    setIsFilterApplied={setIsFilterApplied}
+                                />
 
                                 <div
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        width: "99rem",
-                                    }}
+                                    className="excursion-main__content"
+                                    style={
+                                        isFilterOpen
+                                            ? {
+                                                  filter: "grayscale(1)",
+                                                  pointerEvents: "none",
+                                              }
+                                            : null
+                                    }
                                 >
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            margin: "1rem 2rem 2rem 1rem",
-                                            color: "#55575b",
-                                            fontSize: "1.4rem",
-                                            fontFamily: "Poppins, sans-serif",
-                                            fontWeight: "300",
-                                        }}
-                                    >
-                                        <span style={{ marginRight: "auto" }}>
-                                            {nbResults} results
+                                    <ExcursionInfoSort>
+                                        <span>
+                                            {nbResults}{" "}
+                                            {nbResults > 1
+                                                ? `results`
+                                                : `result`}
                                         </span>
+                                        {isTabLand && (
+                                            <FilterBtn
+                                                onClick={() => {
+                                                    setIsFilterOpen(true);
+                                                }}
+                                                style={
+                                                    isFilterApplied
+                                                        ? {
+                                                              backgroundColor:
+                                                                  "#7b7e84",
+                                                              color: "white",
+                                                          }
+                                                        : null
+                                                }
+                                            >
+                                                {isTabPort ? (
+                                                    <FilterSvg
+                                                        style={{
+                                                            width: "1.6rem",
+                                                            height: "1.6rem",
+                                                            marginRight: "4px",
+                                                            margin: "0 auto",
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <BsFilterRight
+                                                        style={{
+                                                            width: "1.6rem",
+                                                            height: "1.6rem",
+                                                            marginRight: "7px",
+                                                        }}
+                                                    />
+                                                )}
+                                                {!isTabPort && (
+                                                    <span>Filters</span>
+                                                )}
+                                            </FilterBtn>
+                                        )}
                                         <ExcursionSort
                                             setExcursions={setExcursions}
                                             setSortField={setSortField}
                                         />
-                                    </div>
+                                    </ExcursionInfoSort>
                                     {excursions.map((el) => {
                                         return (
-                                            <TourBox
-                                                id={el.name}
-                                                key={el.name}
-                                                excursion={el}
-                                                animationLoad={animationLoad}
-                                            />
+                                            <div
+                                                key={el._id}
+                                                style={
+                                                    !isTabPort
+                                                        ? {
+                                                              display: "flex",
+                                                              flexDirection:
+                                                                  "column",
+                                                              flex: "1 1",
+                                                          }
+                                                        : null
+                                                }
+                                            >
+                                                {isTabPort ? (
+                                                    <ResponsiveTourBox
+                                                        id={el.name}
+                                                        key={el.name}
+                                                        excursion={el}
+                                                        animationLoad={
+                                                            animationLoad
+                                                        }
+                                                    />
+                                                ) : (
+                                                    <TourBox
+                                                        id={el._id}
+                                                        key={el._id}
+                                                        excursion={el}
+                                                        animationLoad={
+                                                            animationLoad
+                                                        }
+                                                    />
+                                                )}
+                                            </div>
                                         );
                                     })}
                                 </div>
-                                <div
-                                    style={{
-                                        position: "absolute",
-                                        left: "0",
-                                        top: "45rem",
-                                        zIndex: "-1",
-                                        width: "100%",
-                                        height: "35rem",
-                                    }}
-                                >
-                                    <Decoration />
-                                </div>
+                                <Decoration />
                             </main>
                         </div>
-                        <Footer />
                     </div>
+                    <Footer />
                 </>
             )}
         </>
