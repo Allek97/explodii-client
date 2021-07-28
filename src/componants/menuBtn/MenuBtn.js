@@ -163,12 +163,7 @@ export const SideLink = styled.span`
     color: white;
 `;
 
-export default function ExcursionMenuBtn({
-    page,
-    isScrolled,
-    userName,
-    userPhoto,
-}) {
+export default function MenuBtn({ page, isScrolled, userName, userPhoto }) {
     // Hooks
     const [isMenu, setMenu] = useState(false);
     // Refs
@@ -240,18 +235,18 @@ export default function ExcursionMenuBtn({
                         <AccountSvg style={SvgStyle} />
                         <SideLink>Account</SideLink>
                     </SideItem>
-                    {page === "excursion-content" && (
+                    {page === "excursion" ? (
                         <SideItem isScrolled={isScrolled} href="/">
                             <HomeSvg style={SvgStyle} />
                             <SideLink>Homepage</SideLink>
                         </SideItem>
-                    )}
-                    {page === "homepage" && (
+                    ) : (
                         <SideItem isScrolled={isScrolled} href="/excursions">
                             <FaHiking style={SvgStyle} />
                             <SideLink>Excursions</SideLink>
                         </SideItem>
                     )}
+
                     <SideItem isScrolled={isScrolled} onClick={handleLogOut}>
                         <LogOutSvg style={SvgStyle} />
                         <SideLink>Logout</SideLink>
@@ -262,13 +257,13 @@ export default function ExcursionMenuBtn({
     );
 }
 
-ExcursionMenuBtn.propTypes = {
+MenuBtn.propTypes = {
     page: PropTypes.string,
     isScrolled: PropTypes.bool.isRequired,
     userName: PropTypes.string.isRequired,
     userPhoto: PropTypes.string.isRequired,
 };
 
-ExcursionMenuBtn.defaultProps = {
+MenuBtn.defaultProps = {
     page: "excursion-content",
 };
