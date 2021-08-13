@@ -182,7 +182,7 @@ export default function SignUp() {
                                 }}
                             />
                             {passwordError !== "" && passwordError && (
-                                <span className="signupForm__error">
+                                <span className="signupForm__error signupForm__error--password">
                                     {passwordError}
                                 </span>
                             )}
@@ -207,7 +207,7 @@ export default function SignUp() {
                             />
                             {passworConfirmError !== "" &&
                                 passworConfirmError && (
-                                    <span className="signupForm__error">
+                                    <span className="signupForm__error signupForm__error--password">
                                         {passworConfirmError}
                                     </span>
                                 )}
