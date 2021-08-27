@@ -97,6 +97,7 @@ export default function ExcursionContent(props) {
                 }
                 setExcursion(res.data.data[0]);
                 // console.log(res.data.data[0]);
+
                 setApiConsumed(true);
             } catch (err) {
                 console.log(err.response.data.message);
