@@ -145,8 +145,16 @@ export default function ExcursionContent(props) {
         return "No tours planned for now, new dates will be coming soon !";
     };
 
+    // BUG: Fixing lag issue when scolling with navbar
+    function debounce(method, delay) {
+        clearTimeout(method._tId);
+        method._tId = setTimeout(function () {
+            method();
+        }, delay);
+    }
+
     useEffect(() => {
-        window.addEventListener("scroll", listenScrollEvent);
+        window.addEventListener("scroll", () => debounce(listenScrollEvent, 5));
         return () => {
             window.removeEventListener("scroll", listenScrollEvent);
         };
