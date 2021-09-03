@@ -128,6 +128,7 @@ export default function PaymentSuccessBox(props) {
                             fontWeight: "700",
                         }}
                         onClick={() => {
+                            setOrderStatus(false);
                             setIsBoxOpen(false);
                         }}
                     >
