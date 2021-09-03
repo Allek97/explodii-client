@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import Tilt from "react-tilt";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
 
 import "./_login.scss";
 import "../../componants/reusable/_navBar.scss";
@@ -182,10 +183,10 @@ export default function LogIn() {
                             </button>
                             <div className="loginForm__forgot">
                                 <p>Forgot </p>
-                                <a href="/">Email / Password ?</a>
+                                <Link to="/login">Email / Password ?</Link>
                             </div>
                             <div className="loginForm__signup">
-                                <a href="/signup">Create a new account</a>
+                                <Link to="/signup">Create a new account</Link>
                             </div>
                         </form>
                     </div>

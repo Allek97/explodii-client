@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import "./_signUp.scss";
 import "../../componants/reusable/_navBar.scss";
@@ -217,7 +218,7 @@ export default function SignUp() {
                         </button>
                         <div className="signupForm__login">
                             <p>Already have an account?</p>
-                            <a href="/login">Sign In</a>
+                            <Link to="/login">Sign In</Link>
                         </div>
                         {isLoading && (
                             <div

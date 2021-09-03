@@ -116,7 +116,7 @@ export default function PaymentSuccessBox(props) {
             </p>
 
             <ConfirmationBtn
-                href="/account"
+                to="/account"
                 style={{
                     fontSize: "1.45rem",
                     fontWeight: "700",
