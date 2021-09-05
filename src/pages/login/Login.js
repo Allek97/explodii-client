@@ -146,6 +146,7 @@ export default function LogIn() {
                                     className="loginForm__input"
                                     placeholder="Email"
                                     id="email"
+                                    spellCheck="false"
                                     required
                                     onChange={(e) => {
                                         // We track email changes
@@ -164,6 +165,7 @@ export default function LogIn() {
                                     className="loginForm__input"
                                     placeholder="Password"
                                     id="password"
+                                    spellCheck="false"
                                     required
                                     onChange={(e) => {
                                         // We track password changes
