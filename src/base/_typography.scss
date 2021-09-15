@@ -1,3 +1,12 @@
+@font-face {
+    font-family: Merriweather;
+    src: url("../assets/fonts/Merriweather-Regular.ttf") format("truetype");
+    font-style: normal;
+
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+}
+
 .heading-primary {
     // background-image: linear-gradient(to right, #e0b011, #9e7c0c);
     background-image: linear-gradient(to right, #445eb6, #09084b);
@@ -5,7 +14,7 @@
     color: transparent;
 
     // color: #e0b011;
-    font-family: "Merriweather", serif;
+    font-family: Merriweather, serif;
     font-size: 3.5rem;
     font-weight: 700;
     text-transform: uppercase;

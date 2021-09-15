@@ -1,5 +1,14 @@
 @import "../../../../abstracts/_mixins";
 
+@font-face {
+    font-family: Poppins;
+    src: url("../../../../assets/fonts/Poppins-Regular.ttf") format("truetype");
+    font-style: normal;
+
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+}
+
 .booking-info {
     width: 70%;
     margin: 2rem 0;
