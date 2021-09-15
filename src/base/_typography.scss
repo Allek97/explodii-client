@@ -1,7 +1,7 @@
 @font-face {
-    font-family: Merriweather;
-    src: url("../assets/fonts/Merriweather-Bold.ttf") format("truetype");
-    // font-weight: 600 !important;
+    font-family: ManropeBold;
+    src: url("../assets/fonts/Manrope-ExtraBold.ttf") format("truetype");
+    font-weight: 600;
     font-style: normal;
 
     /* other formats include: 'woff2', 'truetype, 'opentype',
@@ -15,11 +15,12 @@
     color: transparent;
 
     // color: #e0b011;
-    font-family: Merriweather;
-    font-size: 3.5rem;
+    font-family: ManropeBold;
+    font-size: 4rem;
+
     // font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
     text-align: center;
 
     transition: all 0.2s;
